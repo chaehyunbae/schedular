@@ -23,17 +23,24 @@ int main(int argc, char *argv[]) {
 	int option;
 	int cnt;
 	
-	fp = fopen("schedule.dat", "r");//1. FILE pointer open & error handling
-	if//fill code here ----
+	char buffer[200];
+	FILE *fp = fopen("schedule.dat", "r");
+	if(fp == NULL)
+		printf("file open failed!\n");
+		
+		//1. FILE pointer open & error handling
 	
-	//initializing the list
+	//fill code here ----
+	
+	
+	int list[200][100][100] = {0};//initializing the list
 	printf("Reading the data files... \n");
 	list = (void*)list_genList();
 	
 	
 	
 	
-	//2. read from the file
+	fgets(buffer, sizeof(buffer), fp);//2. read from the file
 	while ( /* fill code here -- read from the file*/ )
 	{	
 		//fill code here -- generate genSchedInfo structure by genSchedInfo function
@@ -43,7 +50,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	
-	//fill code here ---- close the file pointer
+	fclose(fp);//fill code here ---- close the file pointer
 	
 	printf("Read done! %i schedules are read\n", list_len(list));
 	
